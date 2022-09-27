@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <title>ajax-JS</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+       
+</head>
+
+<body>
+        <p id="demo">this is normal text before ajax file render.</p>
+        <button onclick="dataload()">click me</button>
+
+
+
+
+
+        <script>
+                function dataload() {
+                var xhtp = new XMLHttpRequest();
+
+                xhtp.onreadystatechange = function () {
+                        if (this.readyState == 4 && this.status == 200) {
+                               var text = document.getElementById("demo").innerHTML = this.responseText;
+                               console.log(text);
+                        }
+                };
+
+
+                xhtp.open("GET", "https://dummyjson.com/comments", true);
+                xhtp.send();
+        }
+        </script>
+</body>
+
+</html>
